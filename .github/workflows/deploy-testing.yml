@@ -1,0 +1,55 @@
+name: Deploy Testing
+env:
+  AWS_DEFAULT_REGION: us-east-1
+  AWS_ACCESS_KEY_ID: AKIAVEPBBWCCUDJORPG3
+  STACK_NAME: rdok-testing-cyberpunk2077-countdown
+  DEPLOY_BUCKET: rdok-testing-deployments-us-east-1
+  DOMAIN: testing-cyberpunk2077-countdown.rdok.co.uk
+  ENVIRONMENT: testing
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: CloudFormation Package & Deploy
+        run: |
+          aws cloudformation package \
+            --template-file template.yml \
+            --output-template-file packaged-template.yml \
+            --s3-prefix "${STACK_NAME}/packages" \
+            --s3-bucket "${DEPLOY_BUCKET}"
+          aws cloudformation deploy \
+            --s3-bucket "$DEPLOY_BUCKET" \
+            --s3-prefix "${STACK_NAME}/deployments" \
+            --template-file packaged-template.yml \
+            --stack-name "$STACK_NAME" \
+            --capabilities CAPABILITY_IAM \
+            --parameter-overrides \
+              Route53HostedZoneId=ZSY7GT2NEDPN0 \
+              DomainName=${DOMAIN}
+      - name: Website Bucket Sync
+        run: |
+          BUCKET_NAME=$( \
+            aws cloudformation describe-stacks  \
+              --stack-name "$STACK_NAME" \
+              --query 'Stacks[0].Outputs[?OutputKey==`WebsiteBucket`].OutputValue' \
+              --output text \
+          )
+          aws s3 sync ./jekyll/_site s3://${BUCKET_NAME} --delete
+      - name: Cache Invalidation
+        run: |
+          DISTRIBUTION_ID=$( \
+            aws cloudformation describe-stacks  \
+            --stack-name "$STACK_NAME" \
+            --query 'Stacks[0].Outputs[?OutputKey==`DistributionID`].OutputValue' \
+            --output text \
+          )
+          aws cloudfront create-invalidation \
+            --distribution-id "$DISTRIBUTION_ID" \
+            --paths "/*"
+        env:
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
