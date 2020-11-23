@@ -1,59 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cyberpunk 2077 - Countdown</title>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="" name="team">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vegas.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
 
-    <title>Hello, world!</title>
-
-    <style>
-        body {
-            background: url('/mercenary.jpg') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-    </style>
+    <link href="css/main.css" rel="stylesheet">
 </head>
+<body>
 
-<body class="text-center">
+<!-- PRE LOADER -->
+<section class="preloader">
+    <div class="spinner">
+        <span class="spinner-rotate"></span>
+    </div>
+</section>
 
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-        <div class="inner">
-            <h3 class="masthead-brand">Cover</h3>
-            <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Contact</a>
-            </nav>
+
+<!-- GRID LINE -->
+<section class="grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-2">
+                <div class="grid-line"></div>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <div class="grid-line"></div>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <div class="grid-line"></div>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <div class="grid-line"></div>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <div class="grid-line"></div>
+            </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <main role="main" class="inner cover">
-        <h1 class="cover-heading">Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-        </p>
-    </main>
 
-    <footer class="mastfoot mt-auto">
-        <div class="inner">
-            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+<section id="home">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12">
+                <div class="home-info">
+                    <h1>Cyberpunk 2077 <br>Countdown</h1>
+                    <!-- You can change the date time in init.js file -->
+                    <ul class="countdown">
+                        <li>
+                            <span class="days">14</span>
+                            <h3>Days</h3>
+                        </li>
+                        <li>
+                            <span class="hours">10</span>
+                            <h3>hours</h3>
+                        </li>
+                        <li>
+                            <span class="minutes">15</span>
+                            <h3>minutes</h3>
+                        </li>
+                        <li>
+                            <span class="seconds">34</span>
+                            <h3>seconds</h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
-    </footer>
-</div>
+    </div>
+</section>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- SCRIPTS -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vegas.min.js"></script>
+<script src="js/countdown.js"></script>
+<script src="js/init.js"></script>
+<script src="js/custom.js"></script>
+
 </body>
 </html>
