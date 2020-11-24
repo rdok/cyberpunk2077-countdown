@@ -16,12 +16,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: CloudFormation Package & Deploy
         run: |
-          aws cloudformation package \
-            --template-file template.yml \
+          sam package \
             --output-template-file packaged-template.yml \
             --s3-prefix "${STACK_NAME}/packages" \
             --s3-bucket "${DEPLOY_BUCKET}"
-          aws cloudformation deploy \
+          sam deploy \
             --s3-bucket "$DEPLOY_BUCKET" \
             --s3-prefix "${STACK_NAME}/deployments" \
             --template-file packaged-template.yml \
@@ -50,5 +49,3 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id "$DISTRIBUTION_ID" \
             --paths "/*"
-        env:
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
