@@ -1,11 +1,11 @@
 name: Deploy Testing
 env:
   AWS_DEFAULT_REGION: us-east-1
-  AWS_ACCESS_KEY_ID: AKIAVEPBBWCCUDJORPG3
   STACK_NAME: rdok-testing-cyberpunk2077-countdown
   DEPLOY_BUCKET: rdok-testing-deployments-us-east-1
   DOMAIN: testing-cyberpunk2077-countdown.rdok.co.uk
   ENVIRONMENT: testing
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 on:
   workflow_dispatch:

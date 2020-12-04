@@ -1,11 +1,11 @@
 name: Deploy Production
 env:
   AWS_DEFAULT_REGION: us-east-1
-  AWS_ACCESS_KEY_ID: AKIAVEPBBWCCUDJORPG3
   STACK_NAME: rdok-production-cyberpunk2077-countdown
   DEPLOY_BUCKET: rdok-production-deployments-us-east-1
   DOMAIN: cyberpunk2077-countdown.rdok.co.uk
   ENVIRONMENT: production
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 on:
   workflow_dispatch:
